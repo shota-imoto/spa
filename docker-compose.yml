@@ -1,0 +1,16 @@
+version: "3.8"
+volumes:
+  src:
+    driver_opts:
+      type: none
+      device: $PWD
+      o: bind
+services:
+  server:
+    build:
+      context: .
+      dockerfile: docker/server/Dockerfile
+    volumes:
+      - src:/go/src/app
+    ports:
+      - 5000:5000
